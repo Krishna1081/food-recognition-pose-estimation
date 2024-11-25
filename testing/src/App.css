@@ -1,0 +1,114 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+body h1 {
+  font-size: 2.25rem;
+  font-weight: 500;
+  font-style: normal;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: 2.25rem;
+}
+
+.change-color {
+  color: #21695c;
+  font-weight: 500;
+  overflow: visible;
+}
+
+body p {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.logo {
+  text-decoration: none;
+  display: flex; /* Arrange child elements in a row */
+  align-items: start; /* Vertically align items */
+  gap: 10px; /* Add spacing between image and text */
+}
+
+/* General styles */
+.navbar {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 0;
+  margin: 0 auto; /* Ensure it stays centered in a container */
+}
+
+.navbar-list {
+  display: flex;
+  flex-direction: row; /* Arrange list items in a row */
+  justify-content: center; /* Center the list items */
+  align-items: center; /* Center items vertically */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.img-size {
+  width: 250px;
+}
+
+.img-hero {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* button styling */
+
+/* Light Button */
+.btn {
+  background-color: #526e48;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  color: #ffff;
+  border: solid 3px #ffff;
+  border-radius: 0.5rem;
+  padding: 20px;
+  transition: all 0.3s ease; /* Add smooth transition for hover */
+}
+
+.btn:hover {
+  background-color: #ffffff; /* Change background color */
+  color: #526e48; /* Change text color */
+  border: solid 3px #526e48; /* Add a border for emphasis */
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Hero Section */
+.hero-page-web {
+  display: flex;
+  display-direction: row;
+  justify-content: center;
+}
+
+/* Videos */
+
+.Videos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
