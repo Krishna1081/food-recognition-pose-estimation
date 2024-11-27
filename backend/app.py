@@ -70,35 +70,66 @@ def count_pushups():
 
 def food_detection():
     # Load your YOLO model
-    model = YOLO(r"C:\Users\DELL\Desktop\Desktop stuff\Development\PoseClassification\Website-build\test-react-file\backend\best.pt")
+    model = YOLO(r"C:\Users\DELL\Desktop\Desktop stuff\Development\PoseClassification\Website-build\food-recognition-pose-estimation\backend\best.pt")
 
-    def detect_food_items_from_frame(frame, confidence_threshold=0.7):
+    import cv2
+
+    def detect_food_items_from_frame(frame, class_thresholds=None):
         """
         Detects food items in the given video frame using the YOLO model and returns a dictionary
         with food item names and their respective quantities.
 
         Args:
             frame (numpy.ndarray): The frame captured from the camera.
-            confidence_threshold (float): The minimum confidence score to consider a detection valid.
+            class_thresholds (dict, optional): A dictionary with food item names as keys and their
+                                            respective confidence thresholds as values. If None,
+                                            a default threshold of 0.5 is used for all classes.
 
         Returns:
             dict: A dictionary with food item names as keys and their counts as values.
+            numpy.ndarray: The frame with filtered bounding boxes drawn.
         """
+        if class_thresholds is None:
+            class_thresholds = {"bread": 0.5, "apple": 0.8}  # Default thresholds for known classes
+
         results = model(frame)  # Perform detection on the frame
         detected_items = {}
 
+        # Copy the frame to draw filtered bounding boxes
+        annotated_frame = frame.copy()
+
         for result in results:
             for box in result.boxes:
-                if box.conf.item() >= confidence_threshold:  # Apply confidence threshold
-                    class_id = box.cls.item()
-                    class_name = result.names[class_id]
-                    
+                class_id = box.cls.item()
+                class_name = result.names[class_id]
+                confidence = box.conf.item()
+
+                # Get the specific threshold for the class or default to 0.5
+                threshold = class_thresholds.get(class_name, 0.5)
+
+                if confidence >= threshold:  # Apply the class-specific confidence threshold
+                    # Update the count of detected food items
                     if class_name in detected_items:
                         detected_items[class_name] += 1
                     else:
                         detected_items[class_name] = 1
 
-        return detected_items, results[0].plot()  # Returning the detected items and the frame with bounding boxes
+                    # Draw the bounding box on the frame
+                    x1, y1, x2, y2 = map(int, box.xyxy[0].tolist())
+                    cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                    cv2.putText(
+                        annotated_frame,
+                        f"{class_name} {confidence:.2f}",
+                        (x1, y1 - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        0.5,
+                        (0, 255, 0),
+                        2,
+                    )
+
+        return detected_items, annotated_frame
+
+
 
     def run_camera_detection():
         """
@@ -126,7 +157,7 @@ def food_detection():
                 break
 
             # Detect food items in the frame with confidence threshold of 0.25
-            food_items, annotated_frame = detect_food_items_from_frame(frame, confidence_threshold=0.7)
+            food_items, annotated_frame = detect_food_items_from_frame(frame)
 
             # Display the annotated frame with bounding boxes
             cv2.imshow('Food Detection', annotated_frame)

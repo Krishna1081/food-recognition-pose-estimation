@@ -1,6 +1,13 @@
 import hero from "../assets/hero.png";
+import "../App.css";
 
 function HeroSection() {
+  const handleClickScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="hero-page-web">
       <section>
@@ -12,8 +19,22 @@ function HeroSection() {
         </div>
         <p>Improve your health using food recognition and AI Trainer</p>
         <div className="btn-group">
-          <button className="btn">AI Trainer</button>
-          <button className="btn">Food Recognition</button>
+          <button
+            className="btn"
+            onClick={() => {
+              handleClickScroll("workout-counter");
+            }}
+          >
+            AI Trainer
+          </button>
+          <button
+            className="btn"
+            onClick={() => {
+              handleClickScroll("food-detection");
+            }}
+          >
+            Food Recognition
+          </button>
         </div>
       </section>
       <aside>
