@@ -109,9 +109,146 @@ ul {
 
 /* Videos */
 
-.Videos {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/* Footer Component Styles */
+footer {
+  background-color: #ffffff;
+  color: #1f1f1f;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+footer nav a {
+  color: #00bcd4;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+footer nav a:hover {
+  color: #ffffff;
+}
+
+/* VideosSection Component Styles */
+.VideosSection {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.VideosSection .video-block {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.VideosSection video {
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.VideosSection video:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.VideosSection .description {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.VideosSection h2 {
+  font-size: 1.8rem;
+  color: #444444;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.VideosSection p {
+  font-size: 1rem;
+  color: #555555;
+  margin: 0.5rem 0;
+  line-height: 1.8;
+}
+
+.VideosSection ul {
+  text-align: left;
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #666666;
+  padding-left: 1.5rem;
+}
+
+.VideosSection ul li {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.VideosSection ul li::before {
+  content: "•";
+  color: #00bcd4;
+  font-size: 1.2rem;
+  position: absolute;
+  left: -1.5rem;
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Toggle Button Styling */
+.dark-mode-toggle {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.toggle-button {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-button.light {
+  background-color: #00bcd4;
+}
+
+.toggle-button.dark {
+  background-color: #444;
+  color: #00bcd4;
+}
+
+.toggle-button:hover {
+  opacity: 0.9;
 }

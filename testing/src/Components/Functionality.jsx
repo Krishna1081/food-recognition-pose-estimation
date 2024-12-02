@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "../functionality.css"; // Import the CSS file
+import Navbar from "./navbar";
 
 const Functionality = () => {
   const [pushups, setPushups] = useState(null);
@@ -97,9 +98,18 @@ const Functionality = () => {
 
   return (
     <div className="container">
+      <Navbar />
       <h1 id="workout-counter">Workout Counter</h1>
       <button onClick={startPushups}>Pushups</button>
-      <p>{pushups == null ? 0 : pushups}</p>
+      <p>
+        {pushups == null ? (
+          0
+        ) : (
+          <p>
+            Number of pushups: {pushups}, Calories burnt: {pushups * 0.3}
+          </p>
+        )}
+      </p>
 
       <div className="divider"></div>
 

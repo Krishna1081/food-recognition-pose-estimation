@@ -1,7 +1,7 @@
 import Navbar from "./navbar";
 import HeroSection from "./HeroSection";
 import VideosSection from "./VideoSection";
-import Functionality from "./Functionality";
+import Footer from "./Footer";
 
 function Main() {
   return (
@@ -9,7 +9,7 @@ function Main() {
       <Navbar />
       <HeroSection />
       <VideosSection />
-      <Functionality />
+      <Footer />
     </main>
   );
 }

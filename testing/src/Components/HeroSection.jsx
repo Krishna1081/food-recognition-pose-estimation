@@ -1,12 +1,12 @@
 import hero from "../assets/hero.png";
 import "../App.css";
+import { useNavigate } from "react-router-dom";
 
 function HeroSection() {
-  const handleClickScroll = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  let navigate = useNavigate();
+  const routeChange = (linkto) => {
+    let path = linkto;
+    navigate(path);
   };
   return (
     <div className="hero-page-web">
@@ -22,7 +22,7 @@ function HeroSection() {
           <button
             className="btn"
             onClick={() => {
-              handleClickScroll("workout-counter");
+              routeChange("/workout-tracker");
             }}
           >
             AI Trainer
@@ -30,7 +30,7 @@ function HeroSection() {
           <button
             className="btn"
             onClick={() => {
-              handleClickScroll("food-detection");
+              routeChange("/food-tracker");
             }}
           >
             Food Recognition

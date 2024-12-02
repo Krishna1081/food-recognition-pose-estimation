@@ -5,7 +5,6 @@ import numpy as np
 import time
 import cvzone
 from pose_module import PoseDetector
-import cv2
 import matplotlib.pyplot as plt
 from ultralytics import YOLO
 
